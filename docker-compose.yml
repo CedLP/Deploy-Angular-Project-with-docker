@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  angular:
+    build:
+      context: ./
+      dockerfile: docker-dev/angular/Dockerfile
+    volumes:
+      - ./app:/app/app:rw
+      - ./app/node_modules:/app/app/node_modules
+    ports:
+      - "4200:4200"
+    environment:
+      FRONT_APP_ENV: ${FRONT_APP_ENV:-staging}
